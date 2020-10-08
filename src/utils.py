@@ -11,7 +11,8 @@ def slice_audio(audio: pd.AudioSegment, begin: int = 0, end: int = None) -> pd.A
     """
     is_begin_set = 0 < begin < audio.duration_seconds * 1000
     is_end_set = end is not None and end < audio.duration_seconds * 1000
-    are_timer_ordered = begin < end
+    if end is not None:
+        are_timer_ordered = begin < end
 
     if is_begin_set and is_end_set:
         if are_timer_ordered:
@@ -32,3 +33,4 @@ def slice_audio(audio: pd.AudioSegment, begin: int = 0, end: int = None) -> pd.A
         else:
             warnings.warn(f"Begin and End Timecode are incorrect begin:{begin} end:{end}")
         return audio
+
