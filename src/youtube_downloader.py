@@ -19,9 +19,10 @@ class YoutubeDownloader:
             'logger': self.logger,
         }
 
-        yd.YoutubeDL(ydl_opts).download([url])
+        yd.YoutubeDL(ydl_opts).download([format_video_url(url)])
 
     def download_and_slice_mp3(self, url: str, directory_path: str = "./", begin: int = 0, end: int = None):
+        url = format_video_url(url)
         self.download_mp3(url,"../temp/")
         filename = self.get_id(url)
         music = slice_audio(pd.AudioSegment.from_mp3(f"{self.temp_folder + filename}.mp3"), begin, end)
