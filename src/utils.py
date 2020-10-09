@@ -34,3 +34,6 @@ def slice_audio(audio: pd.AudioSegment, begin: int = 0, end: int = None) -> pd.A
             warnings.warn(f"Begin and End Timecode are incorrect begin:{begin} end:{end}")
         return audio
 
+def format_video_url(url:str)-> str:
+    temp = url.split("&")
+    return temp[0]
