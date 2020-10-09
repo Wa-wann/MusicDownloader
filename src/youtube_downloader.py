@@ -35,5 +35,4 @@ class YoutubeDownloader:
         ydl_opts = {
             'logger': self.logger,
         }
-        print(f"info : {yd.YoutubeDL(ydl_opts).extract_info(url, download=False)}")
         return yd.YoutubeDL(ydl_opts).extract_info(url, download=False)
